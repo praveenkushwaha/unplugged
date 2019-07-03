@@ -1,0 +1,18 @@
+#!/bin/bash
+
+declare -a arr=("eth0" "enth1" "enth2" "enth3" "enth4"
+"enp1" "enp2" "enp3" "enp4" "en6" "enp5" "enp" )
+
+
+declare a=0
+
+for i in "${arr[@]}"; do
+	
+	var=$(cat /sys/class/net/$i/carrier)
+	if [ $var == $a ]
+	   then echo $i
+	  ethtool -p $i 5
+	fi
+	
+done
+
